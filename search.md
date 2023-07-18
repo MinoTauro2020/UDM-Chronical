@@ -34,4 +34,11 @@ metadata.event_type = "NETWORK_CONNECTION" AND metadata.vendor_name = "Crowdstri
 metadata.product_name:"<product_name>" AND metadata.vendor_name:"<vendor_name>"
 metadata.vendor_name = "LimaCharlie" and target.process.file.sha256 !=""
 
+## YARA
+rule multi_logim {
+meta : author = "a"
+events: $e1.target.user = $user  $e1.metadata.event_type = "USER_LOGIN"
+match: $user over 5m 
+condtion: #e1 >3
+}
 
